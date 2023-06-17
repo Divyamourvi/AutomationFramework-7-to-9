@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Qspiders</groupId>
+  <artifactId>AutomationFramework</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <dependencies>
+	  
+	  <!-- This is  latest selenium version web driver-->
+	  <dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.8.3</version>
+</dependency>
+
+
+
+
+<!-- webdrivermanager-this tool manages the driver executables-->
+<dependency>
+    <groupId>io.github.bonigarcia</groupId>
+    <artifactId>webdrivermanager</artifactId>
+    <version>5.1.0</version>
+</dependency>
+
+
+<!--Testng-to add testng librarires to build path-->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.4.0</version>
+    <scope>test</scope>
+</dependency>
+
+
+<!-- mysql connector for jdbc dependency-->
+<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>8.0.28</version>
+</dependency>
+
+<!-- Apache poi for excel-->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>4.1.2</version>
+</dependency>
+
+<!-- sister tool with apache poi for excel sheet-->
+	  <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>4.1.2</version>
+</dependency>
+
+<!-- common io for screenshot-->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version>
+</dependency>
+
+	  
+	  
+  </dependencies>
+  <profiles>
+	  <profile>
+		  <id>Regression</id>
+  				<build>
+				 <plugins>
+	 				 <plugin>
+			 <groupId>org.apache.maven.plugins</groupId>
+ 			 <artifactId>maven-surefire-plugin</artifactId>
+  			 <version>3.1.2</version> 
+ 	  <configuration> 
+	  <suiteXmlFiles> <suiteXmlFile>testng_RegressionSuite.xml</suiteXmlFile> 
+  </suiteXmlFiles>
+   </configuration> 
+  </plugin>
+  </plugins>
+  </build>
+    </profile>
+    
+  
+	  <profile>
+		  <id>Smoke</id>
+  				<build>
+				 <plugins>
+	 				 <plugin>
+			 <groupId>org.apache.maven.plugins</groupId>
+ 			 <artifactId>maven-surefire-plugin</artifactId>
+  			 <version>3.1.2</version> 
+ 	  <configuration> 
+	  <suiteXmlFiles> <suiteXmlFile>testng_SmokeExecution.xml</suiteXmlFile> 
+  </suiteXmlFiles>
+   </configuration> 
+  </plugin>
+  </plugins>
+  </build>
+    </profile>
+    </profiles>
+</project>
